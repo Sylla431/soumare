@@ -9,29 +9,29 @@ import 'package:soumare/transport/TransportBottomNavigationBar.dart';
 import 'package:soumare/transport/transport_home_page.dart';
 import 'package:upgrader/upgrader.dart';
 
-import 'amplify_outputs.dart';
+
 import 'police/bottomNavigationBar.dart';
 import 'utils/Colors.dart';
 
 Future<void> main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
-    await _configureAmplify();
+    // await _configureAmplify();
     runApp(const MyApp());
   } on AmplifyException catch (e) {
     runApp(Text("Error configuring Amplify: ${e.message}"));
   }
 }
 
-Future<void> _configureAmplify() async {
-  try {
-    await Amplify.addPlugin(AmplifyAuthCognito());
-    await Amplify.configure(amplifyConfig);
-    safePrint('Successfully configured');
-  } on Exception catch (e) {
-    safePrint('Error configuring Amplify: $e');
-  }
-}
+// Future<void> _configureAmplify() async {
+//   try {
+//     await Amplify.addPlugin(AmplifyAuthCognito());
+//     await Amplify.configure(amplifyConfig);
+//     safePrint('Successfully configured');
+//   } on Exception catch (e) {
+//     safePrint('Error configuring Amplify: $e');
+//   }
+// }
 
 
 class MyApp extends StatelessWidget {
