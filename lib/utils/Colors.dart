@@ -8,7 +8,7 @@ class C {
  // static Color mainColor = Color(0xff2E37A4);
  static Color mainColor1 = Color(0xff1a1a1e);
  static Color textColor = Color(0xff333448);
- static Color secondColor = Color(0xff00D3C7);
+ static Color secondColor = Color(0xff087569);
  static Color textColor2 = Color(0xffFAFAED);
  static Color mainColor = Color(0xff242442);
  static Color red = Color(0xffb62929);

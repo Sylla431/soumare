@@ -21,19 +21,19 @@ class _TransportPageState extends State<TransportPage> {
       // Add your images in assets
     },
     {
-      'title': 'Air Jumbo',
-      'location': 'Paris',
-      'image': 'assets/images/fly.jpg',
+      'title': 'Air Niono',
+      'location': 'Tombouctou',
+      'image': 'assets/images/bus.jpg',
       'date et heure': '10/02/2024 02h00'
     },
     {
-      'title': 'Sylla Airline',
+      'title': 'kangala Airline',
       'location': 'Tokyo',
       'image': 'assets/images/airT.jpg',
       'date et heure': '30/12/2024 10h00'
     },
     {
-      'title': 'Nimaga Airlines',
+      'title': 'Kangala Airlines',
       'location': 'Afrique du Sud',
       'image': 'assets/images/airT.jpg',
       'date et heure': '20/03/2024 20h00'
@@ -43,20 +43,6 @@ class _TransportPageState extends State<TransportPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      //   leading: IconButton(
-      //     icon: Icon(Icons.arrow_back, color: Colors.black),
-      //     onPressed: () {},
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       icon: Icon(Icons.search, color: Colors.black),
-      //       onPressed: () {},
-      //     ),
-      //   ],
-      // ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20 ).r,

@@ -249,7 +249,7 @@ class ShippingCalculatorPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
-                    primary: C.mainColor, // Button color
+                    // primary: C.mainColor, // Button color
                   ),
                   child: Text(
                     "Enregistrer",

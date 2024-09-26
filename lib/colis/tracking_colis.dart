@@ -49,7 +49,6 @@ class _TrackingPageState extends State<TrackingPage> {
       ),
       body: Column(
         children: [
-          // This would be your Map widget (placeholder for now)
           Container(
             height: MediaQuery.of(context).size.height * 0.4,
             color: Colors.grey[300], // Placeholder for map background
@@ -61,81 +60,78 @@ class _TrackingPageState extends State<TrackingPage> {
             ),
           ),
           // Overlay the shipment info over the map
-          Container(
-            padding: EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 8.0,
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "DS12846758",
-                      style: C.headLineStyle3,
-                    ),
-                    Chip(
-                      label: Text(
-                        "On the way",
-                        style: C.headLineStyle4,
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(16.0).r,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+            
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "DS12846758",
+                        style: C.headLineStyle3,
                       ),
-                      backgroundColor: Colors.orange,
-                      labelStyle: TextStyle(color: Colors.white),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 8),
-                Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage(
-                          'assets/images/driver.png'), // Placeholder for driver's image
-                      radius: 25,
-                    ),
-                    SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Livreur",
-                          style: C.headLineStyle4,
+                      Chip(
+                        label: Text(
+                          "En route",
+                          style: C.headLineStyle4.copyWith(color: C.textColor2),
                         ),
-                        Text(
-                          "Modibo Camara",
-                          style: C.headLineStyle4,
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        // Call function here
-                      },
-                      icon: Icon(Icons.phone),
-                      label: Text("Appeler Modibo"),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.orange,
+                        backgroundColor:C.mainColor,
+                        labelStyle: TextStyle(color: Colors.white),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16),
-                Text(
-                  "About 2 hours will come",
-                  style: TextStyle(fontSize: 16.0, color: Colors.grey),
-                ),
-                SizedBox(height: 16),
-                _buildTimeline(),
-              ],
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: AssetImage(
+                            'assets/images/driver.png'), // Placeholder for driver's image
+                        radius: 25,
+                      ),
+                      SizedBox(width: 12),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Livreur",
+                            style: C.headLineStyle4,
+                          ),
+                          Text(
+                            "Modibo Camara",
+                            style: C.headLineStyle4,
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          // Call function here
+                        },
+                        icon: Icon(Icons.phone),
+                        label: Text("Appeler Modibo",style: C.headLineStyle4.copyWith(color: C.textColor2),),
+                        style: ElevatedButton.styleFrom(
+                          // primary: C.mainColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    "Environ 2 heures",
+                    style: C.headLineStyle4,
+                  ),
+                  SizedBox(height: 16),
+                  _buildTimeline(),
+                ],
+              ),
             ),
           ),
         ],
@@ -144,39 +140,41 @@ class _TrackingPageState extends State<TrackingPage> {
   }
 
   Widget _buildTimeline() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: stops.map((stop) {
-        IconData icon;
-        Color iconColor;
+    return Expanded(
+      child:ListView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: stops.map((stop) {
+          IconData icon;
+          Color iconColor;
 
-        switch (stop['status']) {
-          case 'passé':
-            icon = Icons.check_circle;
-            iconColor = Colors.green;
-            break;
-          case 'actuel':
-            icon = Icons.location_on;
-            iconColor = Colors.orange;
-            break;
-          default:
-            icon = Icons.radio_button_unchecked;
-            iconColor = Colors.grey;
-        }
+          switch (stop['status']) {
+            case 'passé':
+              icon = Icons.check_circle;
+              iconColor = Colors.green;
+              break;
+            case 'actuel':
+              icon = Icons.location_on;
+              iconColor = C.mainColor;
+              break;
+            default:
+              icon = Icons.radio_button_unchecked;
+              iconColor = C.mainColor;
+          }
 
-        return ListTile(
-          leading: Icon(
-            icon,
-            color: iconColor,
-            size: 30.0,
-          ),
-          title: Text(
-            stop['address']!,
-            style: TextStyle(fontSize: 16.0),
-          ),
-          subtitle: Text(stop['date']!),
-        );
-      }).toList(),
+          return ListTile(
+            leading: Icon(
+              icon,
+              color: iconColor,
+              size: 30.0,
+            ),
+            title: Text(
+              stop['address']!,
+              style: TextStyle(fontSize: 16.0),
+            ),
+            subtitle: Text(stop['date']!),
+          );
+        }).toList(),
+      ),
     );
   }
 }
