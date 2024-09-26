@@ -207,20 +207,22 @@ class CustomScaffold extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Spacer(),
-            // App logo
-             Padding(
-              padding: EdgeInsets.only(top: 32),
-              child: Center(child: Image.asset('assets/images/test.png',)),
-            ),
-            Container(
-              constraints: const BoxConstraints(maxWidth: 600),
-              child: body,
-            ),
-            Spacer(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Spacer(),
+              // App logo
+               Padding(
+                padding: EdgeInsets.only(top: 32),
+                child: Center(child: Image.asset('assets/images/test.png',)),
+              ),
+              Container(
+                constraints: const BoxConstraints(maxWidth: 600),
+                child: body,
+              ),
+              // Spacer(),
+            ],
+          ),
         ),
       ),
       persistentFooterButtons: footer != null ? [footer!] : null,
